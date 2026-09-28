@@ -1,0 +1,53 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - img "PX" [ref=e4]
+    - heading "Hi, I'm Jomar" [level=1] [ref=e5]
+    - paragraph [ref=e6]: I build tools for prop firm futures traders. Solo, technical founder.
+  - generic [ref=e7]:
+    - heading "Open source" [level=2] [ref=e8]
+    - heading [level=3] [ref=e9]:
+      - link "propfirm-calc" [ref=e10] [cursor=pointer]:
+        - /url: https://github.com/shootingallday/propfirm-calc
+    - paragraph [ref=e11]:
+      - text: "Dependency-free Python math and CLI for funded accounts: trailing drawdown floor, the consistency rule, payout eligibility, position sizing, payout projection."
+      - code [ref=e12]: pip install propfirm-calc
+  - generic [ref=e13]:
+    - heading "Building" [level=2] [ref=e14]
+    - list [ref=e15]:
+      - listitem [ref=e16]:
+        - strong [ref=e17]: PX Journals
+        - text: Trading journal for prop firm futures traders.
+      - listitem [ref=e18]:
+        - strong [ref=e19]: Rewind
+        - text: Backtester for NQ and ES. Rust, from scratch.
+      - listitem [ref=e20]:
+        - strong [ref=e21]: Market Order
+        - text: Execution engine.
+      - listitem [ref=e22]:
+        - strong [ref=e23]: OrderFilled
+        - text: Self-copy trade copier. Your own accounts, one leader, per-account sizing.
+      - listitem [ref=e24]:
+        - strong [ref=e25]: Clips
+        - text: Records your chart while you trade and cuts each closed trade into a vertical clip.
+  - generic [ref=e26]:
+    - heading "Why" [level=2] [ref=e27]
+    - paragraph [ref=e28]: I trade prop firm futures. The tools out there are multi-asset retail products with prop firm support bolted on. Mine start from futures and prop firm rules. Most tools try to serve everyone; these serve one audience well.
+  - generic [ref=e29]:
+    - heading "Stack" [level=2] [ref=e30]
+    - list [ref=e31]:
+      - listitem [ref=e32]: TypeScript
+      - listitem [ref=e33]: React
+      - listitem [ref=e34]: Rust
+      - listitem [ref=e35]: Python
+      - listitem [ref=e36]: Node
+      - listitem [ref=e37]: Postgres
+      - listitem [ref=e38]: Tailwind
+      - listitem [ref=e39]: Cloudflare
+  - generic [ref=e40]:
+    - heading "Contact" [level=2] [ref=e41]
+    - paragraph [ref=e42]:
+      - link "jomar@pxjournals.com" [ref=e43] [cursor=pointer]:
+        - /url: mailto:jomar@pxjournals.com
+      - text: ·
+      - link "github.com/shootingallday" [ref=e44] [cursor=pointer]:
+        - /url: https://github.com/shootingallday

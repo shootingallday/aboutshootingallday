@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jomar · shootingallday</title>
+<meta name="description" content="Jomar builds tools for prop firm futures traders. Solo, technical founder.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--px-font-sans); font-size: var(--px-text-md); line-height: var(--px-leading-relaxed); }
+  main { max-width: 40rem; margin-inline: auto; padding: var(--px-space-12) var(--px-space-5) var(--px-space-16); display: grid; gap: var(--px-space-6); }
+  header img { height: 28px; display: block; margin-block-end: var(--px-space-8); }
+  h1 { font-size: var(--px-text-3xl); line-height: var(--px-leading-tight); letter-spacing: var(--px-tracking-tight); margin: 0 0 var(--px-space-2); }
+  .lede { color: var(--muted-foreground); font-size: var(--px-text-lg); margin: 0; }
+  section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-card); box-shadow: var(--shadow-sm); padding: var(--px-space-6); }
+  h2 { font-size: var(--px-text-sm); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted-foreground); margin: 0 0 var(--px-space-4); }
+  h3 { font-size: var(--px-text-lg); margin: 0 0 var(--px-space-1); }
+  p { margin: 0; }
+  a { color: var(--link); }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--px-space-4); }
+  li strong { display: block; }
+  li span { color: var(--muted-foreground); }
+  code { font-family: var(--px-font-mono); background: var(--muted); border-radius: var(--radius-control); padding: 2px 6px; font-size: var(--px-text-sm); }
+  .stack { display: flex; flex-wrap: wrap; gap: var(--px-space-2); }
+  .stack li { border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 2px var(--px-space-3); font-size: var(--px-text-sm); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="px-lockup-light.svg" alt="PX">
+    <h1>Hi, I'm Jomar</h1>
+    <p class="lede">I build tools for prop firm futures traders. Solo, technical founder.</p>
+  </header>
+
+  <section>
+    <h2>Open source</h2>
+    <h3><a href="https://github.com/shootingallday/propfirm-calc">propfirm-calc</a></h3>
+    <p>Dependency-free Python math and CLI for funded accounts: trailing drawdown floor, the consistency rule, payout eligibility, position sizing, payout projection. <code>pip install propfirm-calc</code></p>
+  </section>
+
+  <section>
+    <h2>Building</h2>
+    <ul>
+      <li><strong>PX Journals</strong><span>Trading journal for prop firm futures traders.</span></li>
+      <li><strong>Rewind</strong><span>Backtester for NQ and ES. Rust, from scratch.</span></li>
+      <li><strong>Market Order</strong><span>Execution engine.</span></li>
+      <li><strong>OrderFilled</strong><span>Self-copy trade copier. Your own accounts, one leader, per-account sizing.</span></li>
+      <li><strong>Clips</strong><span>Records your chart while you trade and cuts each closed trade into a vertical clip.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Why</h2>
+    <p>I trade prop firm futures. The tools out there are multi-asset retail products with prop firm support bolted on. Mine start from futures and prop firm rules. Most tools try to serve everyone; these serve one audience well.</p>
+  </section>
+
+  <section>
+    <h2>Stack</h2>
+    <ul class="stack">
+      <li>TypeScript</li><li>React</li><li>Rust</li><li>Python</li><li>Node</li><li>Postgres</li><li>Tailwind</li><li>Cloudflare</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p><a href="mailto:jomar@pxjournals.com">jomar@pxjournals.com</a> · <a href="https://github.com/shootingallday">github.com/shootingallday</a></p>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,358 @@
+/* PX design tokens (Aero) */
+
+:root {
+  /* tier 1 · neutral ramp */
+  --px-gray-0: #ffffff;
+  --px-gray-50: #fafafa;
+  --px-gray-100: #f5f5f5;
+  --px-gray-200: #e8e8e8;
+  --px-gray-300: #d2d2d2;
+  --px-gray-400: #a1a1a1;
+  --px-gray-450: #868686;
+  --px-gray-500: #6e6e6e;
+  --px-gray-600: #515151;
+  --px-gray-700: #424242;
+  --px-gray-800: #333333;
+  --px-gray-900: #1d1d1d;
+  --px-gray-925: #161616;
+  --px-gray-950: #000000;
+
+  /* tier 1 · chroma */
+  --px-blue-400: #5b8def;
+  --px-blue-500: #2e6be6;
+  --px-blue-600: #2358c4;
+  --px-green-400: #0fa37f;
+  --px-green-500: #0e7a4b;
+  --px-red-300: #e4666e;
+  --px-red-400: #e14f55;
+  --px-red-500: #c93e48;
+  --px-amber-300: #d9a21b;
+  --px-amber-350: #c08a20;
+  --px-amber-400: #b7791f;
+  --px-amber-500: #946212;
+  --px-magenta-400: #b03a9e;
+  --px-magenta-500: #9c2f8b;
+
+  /* tier 1 · brand */
+  --px-brand-300: #78fb1d;
+  --px-brand-600: #4c9e13;
+
+  /* tier 1 · type */
+  --px-font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --px-font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --px-text-xs: 12px;
+  --px-text-sm: 13px;
+  --px-text-base: 14px;
+  --px-text-md: 16px;
+  --px-text-lg: 20px;
+  --px-text-xl: 24px;
+  --px-text-2xl: 32px;
+  --px-text-3xl: 48px;
+  --px-text-hero: clamp(44px, 6.5vw, 76px);
+  --px-leading-tight: 1.05;
+  --px-leading-snug: 1.3;
+  --px-leading-normal: 1.5;
+  --px-leading-relaxed: 1.6;
+  --px-tracking-tight: -0.02em;
+  --px-tracking-tighter: -0.03em;
+
+  /* tier 1 · space (4px base) */
+  --px-space-1: 4px;
+  --px-space-2: 8px;
+  --px-space-3: 12px;
+  --px-space-4: 16px;
+  --px-space-5: 20px;
+  --px-space-6: 24px;
+  --px-space-8: 32px;
+  --px-space-10: 40px;
+  --px-space-12: 48px;
+  --px-space-16: 64px;
+  --px-space-24: 96px;
+
+  /* tier 1 · radius */
+  --px-radius-sm: 6px;
+  --px-radius-md: 8px;
+  --px-radius-lg: 12px;
+  --px-radius-xl: 16px;
+  --px-radius-full: 9999px;
+
+  /* tier 1 · layering */
+  --px-layer-raised: 10;
+  --px-layer-sticky: 20;
+  --px-layer-overlay: 30;
+
+  /* tier 1 · breakpoints */
+  --px-bp-sm: 640px;
+  --px-bp-md: 768px;
+  --px-bp-lg: 1024px;
+  --px-bp-xl: 1280px;
+
+  /* tier 1 · motion */
+  --px-duration-fast: 120ms;
+  --px-duration-base: 200ms;
+  --px-duration-slow: 320ms;
+  --px-duration-reveal: 500ms;
+
+  /* The one duration reduced motion keeps */
+  --px-duration-fade: 120ms;
+
+  /* The decay of the tint a changed value carries */
+  --px-duration-tint: 900ms;
+
+  /* tier 1 · dwell */
+  --px-dwell-short: 4000ms;
+  --px-dwell-medium: 6000ms;
+  --px-dwell-long: 8000ms;
+  --px-dwell-longest: 10000ms;
+  --px-ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --px-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --px-ease-spring: cubic-bezier(0.22, 1.2, 0.36, 1);
+  --px-ease-press: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* tier 1 · scroll-lock compensation */
+  --px-scrollbar-left: 0px;
+  --px-scrollbar-right: 0px;
+
+  /* tier 1 · locale */
+  --px-locale: "en-US";
+  --px-currency: "USD";
+  --px-time-zone: "America/New_York";
+  --px-hour-cycle: "h12";
+  --px-week-start: 0;
+
+  /* tier 2 · surfaces and text (light) */
+  --background: var(--px-gray-100);
+  --foreground: var(--px-gray-900);
+  --card: var(--px-gray-0);
+  --card-foreground: var(--px-gray-900);
+  --popover: var(--px-gray-0);
+  --popover-foreground: var(--px-gray-900);
+  --primary: var(--px-blue-500);
+  --primary-foreground: var(--px-gray-0);
+  --secondary: var(--px-gray-200);
+  --secondary-foreground: var(--px-gray-900);
+  --muted: var(--px-gray-200);
+  --muted-foreground: var(--px-gray-600);
+  --faint-foreground: var(--px-gray-500);
+  --accent: var(--px-gray-200);
+  --accent-foreground: var(--px-gray-900);
+  --destructive: var(--px-red-500);
+  --destructive-foreground: var(--px-gray-0);
+  --link: var(--px-blue-600);
+  --border: var(--px-gray-300);
+  --input: var(--px-gray-300);
+  --ring: var(--px-blue-500);
+
+  /* tier 2 · money and status. The bare role is text (4.5:1); *-fill is marks and meters (3:1). */
+  --gain: var(--px-green-500);
+  --gain-fill: var(--px-green-500);
+  --loss: var(--px-red-500);
+  --loss-fill: var(--px-red-400);
+  --warn: var(--px-amber-500);
+  --warn-fill: var(--px-amber-400);
+  --gain-soft: color-mix(in oklab, var(--gain) 10%, transparent);
+  --loss-soft: color-mix(in oklab, var(--loss) 10%, transparent);
+  --warn-soft: color-mix(in oklab, var(--warn) 12%, transparent);
+  --primary-soft: color-mix(in oklab, var(--primary) 12%, transparent);
+
+  /* tier 2 · media */
+  --skeleton: var(--muted);
+  --skeleton-sheen: color-mix(in oklab, var(--foreground) 8%, var(--muted));
+  --plate: var(--px-gray-0);
+  --media-badge: color-mix(in oklab, var(--px-gray-950) 72%, transparent);
+  --tint-1: var(--px-blue-500);
+  --tint-2: var(--px-green-500);
+  --tint-3: var(--px-amber-500);
+  --tint-4: var(--px-red-500);
+  --tint-foreground: var(--px-gray-0);
+
+  /* tier 2 · brand */
+  --brand-ink: var(--px-gray-900);
+  --brand-accent: var(--px-brand-600);
+  --brand-plate: var(--px-gray-900);
+
+  /* tier 2 · elevation */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.04), 0 4px 12px rgb(0 0 0 / 0.05);
+  --shadow-md: 0 2px 4px rgb(0 0 0 / 0.05), 0 12px 32px rgb(0 0 0 / 0.09);
+  --shadow-lg: 0 8px 16px rgb(0 0 0 / 0.07), 0 24px 64px rgb(0 0 0 / 0.14);
+  --shadow-primary: 0 4px 14px rgb(46 107 230 / 0.35);
+  --shadow-control: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-thumb: 0 1px 2px rgb(0 0 0 / 0.2);
+
+  /* tier 2 · focus. One ring for every control, so the value is written once. */
+  --focus-ring: 0 0 0 1px var(--ring), 0 0 0 4px color-mix(in oklab, var(--ring) 18%, transparent);
+
+  /* tier 2 · chart */
+  --chart-grid: rgb(0 0 0 / 0.06);
+  --chart-axis: var(--faint-foreground);
+  --chart-tick: var(--muted-foreground);
+  --chart-line: var(--muted-foreground);
+  --chart-1: var(--px-blue-500);
+  --chart-2: var(--px-amber-400);
+  --chart-3: var(--px-magenta-500);
+
+  /* tier 2 · syntax */
+  --syntax-background: var(--px-gray-50);
+  --syntax-foreground: var(--foreground);
+  --syntax-token-comment: var(--muted-foreground);
+  --syntax-token-keyword: var(--px-red-500);
+  --syntax-token-string: var(--px-green-500);
+  --syntax-token-string-expression: var(--px-green-500);
+  --syntax-token-function: var(--px-blue-600);
+  --syntax-token-constant: var(--px-amber-500);
+  --syntax-token-parameter: var(--foreground);
+  --syntax-token-punctuation: var(--faint-foreground);
+  --syntax-token-link: var(--link);
+
+  /* tier 2 · layering */
+  --z-raised: var(--px-layer-raised);
+  --z-sticky: var(--px-layer-sticky);
+  --z-overlay: var(--px-layer-overlay);
+
+  /* tier 2 · overlay */
+  --scrim: rgb(0 0 0 / 0.32);
+  --overlay-rise: var(--px-space-2);
+  --overlay-enter: var(--px-duration-base);
+  --overlay-exit: var(--px-duration-fast);
+  --overlay-ease-enter: var(--px-ease-out);
+  --overlay-ease-exit: var(--px-ease-in-out);
+  --drawer-enter: var(--px-duration-slow);
+  --drawer-exit: var(--px-duration-base);
+
+  /* tier 2 · toast dwell */
+  --toast-duration: var(--px-dwell-short);
+  --toast-duration-warn: var(--px-dwell-medium);
+  --toast-duration-loss: var(--px-dwell-longest);
+  --toast-undo: var(--px-dwell-long);
+
+  /* tier 2 · icons */
+  --icon-size: 16px;
+  --icon-size-sm: 14px;
+  --icon-size-lg: 20px;
+  --icon-size-xl: 24px;
+  --icon-stroke: 1.75;
+
+  /* tier 2 · radius roles */
+  --radius-control: var(--px-radius-md);
+  --radius-card: var(--px-radius-lg);
+  --radius-dialog: var(--px-radius-xl);
+  --radius-pill: var(--px-radius-full);
+
+  /* tier 2 · density (app surfaces are the default) */
+  --text-body: var(--px-text-base);
+  --leading-body: var(--px-leading-normal);
+  --control-h: 36px;
+  --control-h-sm: 30px;
+  --control-h-lg: 44px;
+  --control-h-multiline: 88px;
+  --row-h: 44px;
+  --cell-px: 18px;
+  --card-gap: var(--px-space-4);
+  --stack-gap: var(--px-space-6);
+  --gutter: var(--px-space-8);
+  --measure: 1120px;
+  --read-measure: 62ch;
+  color-scheme: light;
+}
+
+/* Reading surfaces: landing pages, docs, long-form notes. Controls keep their app size. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --px-duration-fast: 0ms;
+    --px-duration-base: 0ms;
+    --px-duration-slow: 0ms;
+    --px-duration-reveal: 0ms;
+
+    /* Overlays keep their cross-fade */
+    --overlay-enter: var(--px-duration-fade);
+    --overlay-exit: var(--px-duration-fade);
+    --drawer-enter: var(--px-duration-fade);
+    --drawer-exit: var(--px-duration-fade);
+  }
+}
+
+@media (pointer: coarse) {
+  :root {
+    --control-h: var(--control-h-lg);
+    --control-h-sm: var(--control-h-lg);
+  }
+}
+
+[data-density="reading"] {
+  --text-body: var(--px-text-md);
+  --leading-body: var(--px-leading-relaxed);
+  --icon-size: 18px;
+  --icon-size-sm: 16px;
+  --icon-size-lg: 22px;
+  --icon-size-xl: 26px;
+  --card-gap: var(--px-space-6);
+  --stack-gap: var(--px-space-8);
+  --gutter: var(--px-space-6);
+}
+
+.dark {
+  --background: var(--px-gray-950);
+  --foreground: var(--px-gray-100);
+  --card: var(--px-gray-900);
+  --card-foreground: var(--px-gray-100);
+  --popover: var(--px-gray-900);
+  --popover-foreground: var(--px-gray-100);
+  --primary: var(--px-blue-500);
+  --primary-foreground: var(--px-gray-0);
+  --secondary: var(--px-gray-800);
+  --secondary-foreground: var(--px-gray-100);
+  --muted: var(--px-gray-800);
+  --muted-foreground: var(--px-gray-400);
+  --faint-foreground: var(--px-gray-450);
+  --accent: var(--px-gray-800);
+  --accent-foreground: var(--px-gray-100);
+  --destructive: var(--px-red-300);
+  --destructive-foreground: var(--px-gray-950);
+  --link: var(--px-blue-400);
+  --border: var(--px-gray-700);
+  --input: var(--px-gray-700);
+  --ring: var(--px-blue-400);
+  --gain: var(--px-green-400);
+  --gain-fill: var(--px-green-400);
+  --loss: var(--px-red-300);
+  --loss-fill: var(--px-red-400);
+  --warn: var(--px-amber-300);
+  --warn-fill: var(--px-amber-300);
+
+  /* Same expressions as :root, so the skeleton follows the dark surface roles. */
+  --skeleton: var(--muted);
+  --skeleton-sheen: color-mix(in oklab, var(--foreground) 8%, var(--muted));
+
+  /* Repeated rather than swapped: these sit on media, not on the page. */
+  --plate: var(--px-gray-0);
+  --media-badge: color-mix(in oklab, var(--px-gray-950) 72%, transparent);
+  --tint-1: var(--px-blue-500);
+  --tint-2: var(--px-green-500);
+  --tint-3: var(--px-amber-500);
+  --tint-4: var(--px-red-500);
+  --tint-foreground: var(--px-gray-0);
+  --brand-ink: var(--px-gray-100);
+  --brand-accent: var(--px-brand-300);
+  --brand-plate: var(--px-gray-900);
+  --shadow-sm: 0 0 0 1px rgb(255 255 255 / 0.06), 0 4px 12px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 0 0 1px rgb(255 255 255 / 0.08), 0 12px 32px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 0 0 1px rgb(255 255 255 / 0.08), 0 24px 64px rgb(0 0 0 / 0.6);
+  --shadow-primary: 0 4px 14px rgb(46 107 230 / 0.45);
+  --shadow-control: 0 1px 2px rgb(0 0 0 / 0.2);
+  --shadow-thumb: 0 1px 2px rgb(0 0 0 / 0.35);
+  --chart-grid: rgb(255 255 255 / 0.06);
+  --chart-axis: var(--faint-foreground);
+  --chart-tick: var(--muted-foreground);
+  --chart-line: var(--muted-foreground);
+  --chart-1: var(--px-blue-400);
+  --chart-2: var(--px-amber-350);
+  --chart-3: var(--px-magenta-400);
+  --scrim: rgb(0 0 0 / 0.6);
+  --syntax-background: var(--px-gray-925);
+  --syntax-token-keyword: var(--px-red-300);
+  --syntax-token-string: var(--px-green-400);
+  --syntax-token-string-expression: var(--px-green-400);
+  --syntax-token-function: var(--px-blue-400);
+  --syntax-token-constant: var(--px-amber-300);
+  color-scheme: dark;
+}
