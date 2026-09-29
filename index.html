@@ -63,6 +63,9 @@
 
   .oss { display: grid; gap: var(--px-space-4); }
   @media (min-width: 768px) { .oss { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 767px) { .oss { grid-auto-flow: column; grid-auto-columns: 84%; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(var(--px-space-5) * -1); padding: var(--px-space-1) var(--px-space-5) var(--px-space-4); scroll-padding-inline: var(--px-space-5); scrollbar-width: none; } .oss .card { scroll-snap-align: start; } .oss .card:hover { transform: none; } }
+  .card h3 { display: flex; align-items: baseline; justify-content: space-between; gap: var(--px-space-2); }
+  .ver { font-family: var(--px-font-mono); font-size: var(--px-text-xs); font-weight: 500; color: var(--muted-foreground); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 0 var(--px-space-2); }
   .card { position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-card); box-shadow: var(--shadow-sm); overflow: hidden; transition: box-shadow var(--px-duration-base) var(--px-ease-out), transform var(--px-duration-base) var(--px-ease-out); }
   .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
   .card .viz { height: 150px; border-bottom: 1px solid var(--border); background: var(--background); display: grid; place-items: center; overflow: hidden; }
@@ -174,7 +177,7 @@
             </svg>
           </div>
           <div class="body">
-            <h3><a href="https://github.com/shootingallday/propfirm-calc">propfirm-calc</a></h3>
+            <h3><a href="https://github.com/shootingallday/propfirm-calc">propfirm-calc</a><span class="ver">v0.2.0</span></h3>
             <p>The rule math most journals get subtly wrong: trailing drawdown floor, consistency rule, payout eligibility, position sizing, payout projection.</p>
             <div class="install">pip install propfirm-calc</div>
             <div class="meta"><span>Python</span><span>No dependencies</span><span>MIT</span></div>
@@ -186,7 +189,7 @@
             <svg viewBox="0 0 300 150" width="100%" height="150" aria-hidden="true" id="hist"></svg>
           </div>
           <div class="body">
-            <h3><a href="https://github.com/shootingallday/reshuffle">reshuffle</a></h3>
+            <h3><a href="https://github.com/shootingallday/reshuffle">reshuffle</a><span class="ver">v0.1.0</span></h3>
             <p>Monte Carlo from your own trade log. It deals your trades again in orders that never happened and tells you how often the account passes, blows, and how deep it dips first.</p>
             <div class="install">npm install @shootingallday/reshuffle</div>
             <div class="meta"><span>TypeScript</span><span>Uses propfirm-calc's math</span></div>
@@ -303,8 +306,8 @@
     const grid = css('--border'), faint = css('--faint-foreground');
     const counts = { pass: 0, blow: 0, open: 0 };
     const set = () => {
-      document.getElementById('n-pass').textContent = Math.round(counts.pass / N * 100) + '%';
-      document.getElementById('n-blow').textContent = Math.round(counts.blow / N * 100) + '%';
+      document.getElementById('n-pass').textContent = Math.round(counts.pass / Math.max(1, counts.pass + counts.blow + counts.open) * 100) + '%';
+      document.getElementById('n-blow').textContent = Math.round(counts.blow / Math.max(1, counts.pass + counts.blow + counts.open) * 100) + '%';
       const done = paths.slice(0, counts.pass + counts.blow + counts.open).map((p) => p.pts.length - 1).sort((a, b) => a - b); document.getElementById('n-open').textContent = done.length ? done[done.length >> 1] : 0;
     };
     const frame = (upto) => {
