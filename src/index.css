@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "./styles/px/tailwind.css";
+@import "./styles/px/chart.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans: "Inter Variable", "Inter", "Inter Fallback", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono Variable", "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+@layer base {
+  html {
+    @apply font-sans;
+    }
+  code, kbd, samp, pre {
+    @apply font-mono;
+    }
+}

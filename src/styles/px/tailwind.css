@@ -1,0 +1,131 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./tokens.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--px-font-sans);
+  --font-mono: var(--px-font-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-faint-foreground: var(--faint-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-link: var(--link);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gain: var(--gain);
+  --color-gain-fill: var(--gain-fill);
+  --color-gain-soft: var(--gain-soft);
+  --color-loss: var(--loss);
+  --color-loss-fill: var(--loss-fill);
+  --color-loss-soft: var(--loss-soft);
+  --color-warn: var(--warn);
+  --color-warn-fill: var(--warn-fill);
+  --color-warn-soft: var(--warn-soft);
+  --color-scrim: var(--scrim);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-axis: var(--chart-axis);
+  --color-chart-line: var(--chart-line);
+  --color-chart-sequential-1: var(--chart-sequential-1);
+  --color-chart-sequential-2: var(--chart-sequential-2);
+  --color-chart-sequential-3: var(--chart-sequential-3);
+  --color-chart-sequential-4: var(--chart-sequential-4);
+  --color-chart-sequential-5: var(--chart-sequential-5);
+  --color-chart-loss-3: var(--chart-loss-3);
+  --color-chart-loss-2: var(--chart-loss-2);
+  --color-chart-loss-1: var(--chart-loss-1);
+  --color-chart-zero: var(--chart-zero);
+  --color-chart-gain-1: var(--chart-gain-1);
+  --color-chart-gain-2: var(--chart-gain-2);
+  --color-chart-gain-3: var(--chart-gain-3);
+
+  --radius-sm: var(--px-radius-sm);
+  --radius-md: var(--px-radius-md);
+  --radius-lg: var(--px-radius-lg);
+  --radius-xl: var(--px-radius-xl);
+  --radius-control: var(--radius-control);
+  --radius-card: var(--radius-card);
+  --radius-dialog: var(--radius-dialog);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-primary: var(--shadow-primary);
+
+  --spacing-icon: var(--icon-size);
+  --spacing-icon-sm: var(--icon-size-sm);
+  --spacing-icon-lg: var(--icon-size-lg);
+  --spacing-icon-xl: var(--icon-size-xl);
+  --spacing-control: var(--control-h);
+  --spacing-control-sm: var(--control-h-sm);
+  --spacing-control-lg: var(--control-h-lg);
+  --spacing-control-multiline: var(--control-h-multiline);
+  --spacing-row: var(--row-h);
+  --spacing-cell: var(--cell-px);
+  --spacing-card-gap: var(--card-gap);
+  --spacing-stack: var(--stack-gap);
+  --spacing-gutter: var(--gutter);
+  --container-measure: var(--measure);
+  --container-read: var(--read-measure);
+  --text-body: var(--text-body);
+  --text-body--line-height: var(--leading-body);
+
+  --ease-out: var(--px-ease-out);
+  --ease-in-out: var(--px-ease-in-out);
+  --ease-spring: var(--px-ease-spring);
+  --ease-press: var(--px-ease-press);
+
+  --animate-rise: px-rise var(--px-duration-reveal) var(--px-ease-spring) both;
+  --animate-sheen: px-sheen 1400ms linear infinite;
+}
+
+@utility duration-fast { --tw-duration: var(--px-duration-fast); transition-duration: var(--px-duration-fast); }
+@utility duration-base { --tw-duration: var(--px-duration-base); transition-duration: var(--px-duration-base); }
+@utility duration-slow { --tw-duration: var(--px-duration-slow); transition-duration: var(--px-duration-slow); }
+@utility duration-reveal { --tw-duration: var(--px-duration-reveal); transition-duration: var(--px-duration-reveal); }
+@utility duration-tint { --tw-duration: var(--px-duration-tint); transition-duration: var(--px-duration-tint); }
+@utility spring-snappy { --tw-duration: var(--px-spring-snappy-duration); --tw-ease: var(--px-spring-snappy); transition-duration: var(--px-spring-snappy-duration); transition-timing-function: var(--px-spring-snappy); }
+@utility spring-smooth { --tw-duration: var(--px-spring-smooth-duration); --tw-ease: var(--px-spring-smooth); transition-duration: var(--px-spring-smooth-duration); transition-timing-function: var(--px-spring-smooth); }
+@utility spring-fluid { --tw-duration: var(--px-spring-fluid-duration); --tw-ease: var(--px-spring-fluid); transition-duration: var(--px-spring-fluid-duration); transition-timing-function: var(--px-spring-fluid); }
+
+@keyframes px-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes px-sheen {
+  from { background-position: 200% 0; }
+  to { background-position: -100% 0; }
+}
+
+@keyframes px-tint-up { from { color: var(--gain); } }
+@keyframes px-tint-down { from { color: var(--loss); } }
+
+@layer base {
+  * { border-color: var(--border); }
+  .lucide { stroke-width: var(--icon-stroke); }
+  .px-num { font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
+  .px-num[data-direction="up"] { animation: px-tint-up var(--px-duration-tint) var(--px-ease-out); }
+  .px-num[data-direction="down"] { animation: px-tint-down var(--px-duration-tint) var(--px-ease-out); }
+  body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); font-size: var(--text-body); line-height: var(--leading-body); }
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after { --default-transition-duration: 0s; animation-duration: 0s; animation-iteration-count: 1; transition-duration: 0s; }
+  }
+}
