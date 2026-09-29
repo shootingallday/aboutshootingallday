@@ -9,3 +9,5 @@ pnpm build   # static site in dist/
 ```
 
 PX components come from the PX Brand registry (`components.json`); serve `PX Projects` on 127.0.0.1:8765 to add or refresh one.
+
+Deploying: see [docs/agents/deploy.md](docs/agents/deploy.md).

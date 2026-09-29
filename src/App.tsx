@@ -12,7 +12,7 @@ import { bookOf, useCandles } from "@/lib/terminal-demo"
 import { Reshuffle } from "./reshuffle"
 
 const GITHUB = "https://github.com/shootingallday"
-const X = "https://x.com/"
+const X = "https://x.com/shootingalllday"
 const EMAIL = "mailto:jomar@pxjournals.com"
 
 function GithubIcon() {
@@ -36,7 +36,7 @@ function Desk() {
   const quote = quoteOf(feed, "NQ")
   const nq = INSTRUMENTS.find((i) => i.symbol === "NQ")!
   const candles = useCandles("NQ")
-  const { bids, asks } = bookOf(feed, quote, 7, 40)
+  const { bids, asks } = bookOf(feed, quote, 5, 40)
   return (
     <div className="relative overflow-hidden rounded-dialog border border-border bg-card shadow-lg">
       <BorderBeam />
@@ -47,7 +47,7 @@ function Desk() {
       <div className="grid items-start gap-0 md:grid-cols-[1fr_16rem]">
         <CandlestickChart candles={candles} label="NQ, one-minute candles" range={nq.range} fraction={nq.fraction} size="lg" className="p-3" />
         <div className="hidden border-s border-border p-3 md:block">
-          <OrderBook symbol={quote.symbol} venue={quote.venue} bids={bids} asks={asks} last={quote.price} range={quote.range} maxSize={40} fraction={quote.fraction} depth={7} />
+          <OrderBook symbol={quote.symbol} venue={quote.venue} bids={bids} asks={asks} last={quote.price} range={quote.range} maxSize={40} fraction={quote.fraction} depth={5} />
         </div>
       </div>
     </div>
@@ -111,27 +111,27 @@ function Agents() {
 const OSS = [
   {
     name: "propfirm-calc",
-    version: "v0.2.0",
-    href: `${GITHUB}/propfirm-calc`,
-    body: "The prop firm rule math most journals get subtly wrong: trailing drawdown floor, consistency rule, payout eligibility, position sizing, payout projection.",
-    install: "pip install propfirm-calc",
-    tags: ["Python", "No dependencies", "MIT"],
+    label: "TypeScript · v0.3.0",
+    demo: "https://propfirm-calc.jomardippiton2005.workers.dev",
+    source: `${GITHUB}/propfirm-calc`,
+    body: "All your prop firm accounts in one place, across firms. Type or import your daily P&L and see each account's drawdown floor, consistency and next payout, then drag one slider to see what tomorrow does to every account.",
+    install: "npm install propfirm-calc",
   },
   {
     name: "reshuffle",
-    version: "v0.1.0",
-    href: `${GITHUB}/reshuffle`,
+    label: "TypeScript · v0.1.0",
+    demo: "https://reshuffle.jomardippiton2005.workers.dev",
+    source: `${GITHUB}/reshuffle`,
     body: "Monte Carlo from your own trade log. It deals your trades again in orders that never happened and tells you how often the account passes, blows, and how deep it dips first.",
     install: "npm install @shootingallday/reshuffle",
-    tags: ["TypeScript", "Uses propfirm-calc's math"],
   },
   {
     name: "Market Order",
-    version: null,
-    href: `${GITHUB}/MarketOrder`,
-    body: "The live execution engine. It watches the market in real time, spots a setup as it forms, places the entry, and manages the position to its exit.",
+    label: "Live demo · engine private",
+    demo: "https://marketorder-demo.jomardippiton2005.workers.dev",
+    source: null,
+    body: "The live execution engine's dashboard, running on a mock feed: three contracts trading their setups, a feed outage and recovery, flatten, and the prop firm rules in the account drawer.",
     install: null,
-    tags: ["Live trading", "Broker API"],
   },
 ]
 
@@ -169,7 +169,7 @@ export default function App() {
               <span className="text-muted-foreground">Then I build the tools I trade with.</span>
             </h1>
             <p className="mt-6 mb-0 max-w-xl text-[length:var(--px-text-lg)] text-muted-foreground text-pretty">
-              I'm Jomar. I trade NQ and ES on prop firm accounts and write the software around it: the rule math, the risk simulations, the execution engine, the backtester and the journal. Three of them are open source, and most of the code is written by AI agents I run.
+              I'm Jomar. I trade NQ and ES on prop firm accounts and write the software around it: the rule math, the risk simulations, the execution engine, the backtester and the journal. Three of them you can try right now, and most of the code is written by AI agents I run.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#open-source" className="inline-flex h-11 items-center gap-2 rounded-control bg-foreground px-5 font-semibold text-background shadow-md transition-transform active:translate-y-px">See the projects<ArrowRightIcon className="size-4" /></a>
@@ -188,20 +188,24 @@ export default function App() {
         </section>
 
         <section id="open-source" className="border-t border-border py-20 lg:py-28">
-          <Heading kicker="Open source" title="Three tools for funded futures accounts." body="Each one does one job and gets the prop firm rules exactly right." />
+          <Heading kicker="Try them" title="Three tools for funded futures accounts." body="propfirm-calc and reshuffle are open source. Market Order's engine stays private; its dashboard runs as a public demo on made-up data." />
           <ul className="m-0 list-none border-t border-border p-0">
             {OSS.map((p, i) => (
               <li key={p.name} className="group relative isolate border-b border-border">
                 <span aria-hidden="true" className="absolute inset-y-0 start-0 -z-10 w-0 bg-[color-mix(in_oklab,var(--brand-accent)_10%,transparent)] transition-[width] duration-500 ease-out group-hover:w-full motion-reduce:transition-none" />
                 <div className="grid gap-4 py-8 md:grid-cols-[1fr_22rem] md:items-end md:py-10">
                   <div>
-                    <p className="m-0 font-mono text-[11px] tracking-[0.1em] text-muted-foreground uppercase">0{i + 1} · {p.tags[0]}{p.version ? ` · ${p.version}` : ""}</p>
+                    <p className="m-0 font-mono text-[11px] tracking-[0.1em] text-muted-foreground uppercase">0{i + 1} · {p.label}</p>
                     <h3 className="mt-2 mb-0 text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] font-bold tracking-[-0.045em]">
-                      <a href={p.href} className="inline-flex items-start gap-3 no-underline after:absolute after:inset-0 after:content-['']">{p.name}<ArrowUpRightIcon className="mt-2 size-6 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[color:var(--brand-accent)] md:size-8" /></a>
+                      <a href={p.demo} aria-label={`Try ${p.name}`} className="inline-flex items-start gap-3 no-underline after:absolute after:inset-0 after:content-['']">{p.name}<ArrowUpRightIcon className="mt-2 size-6 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[color:var(--brand-accent)] md:size-8" /></a>
                     </h3>
                   </div>
                   <div className="grid gap-3">
                     <p className="m-0 text-muted-foreground">{p.body}</p>
+                    <div className="relative z-10 flex flex-wrap gap-2">
+                      <a href={p.demo} className="inline-flex h-9 items-center gap-1.5 rounded-control bg-foreground px-3 text-[length:var(--px-text-sm)] font-semibold text-background">Try it<ArrowUpRightIcon className="size-4" /></a>
+                      {p.source ? <a href={p.source} className="inline-flex h-9 items-center gap-1.5 rounded-control border border-border bg-card px-3 text-[length:var(--px-text-sm)] font-medium"><GithubIcon />Source</a> : null}
+                    </div>
                     {p.install ? <code className="relative z-10 block overflow-x-auto rounded-control bg-muted px-3 py-2 font-mono text-[length:var(--px-text-xs)] whitespace-nowrap"><span className="text-faint-foreground">$ </span>{p.install}</code> : null}
                   </div>
                 </div>
@@ -218,7 +222,7 @@ export default function App() {
                 <p className="m-0 font-mono text-[length:var(--px-text-xs)] text-muted-foreground">{s.stage}</p>
                 <h3 className="mt-2 mb-0 text-[length:var(--px-text-xl)] font-semibold">{s.name}</h3>
                 <p className="mt-2 mb-0 text-muted-foreground">{s.body}</p>
-                <span className={`mt-4 inline-block rounded-pill px-2 text-[length:var(--px-text-xs)] ${s.open ? "bg-primary-soft text-foreground" : "bg-muted text-muted-foreground"}`}>{s.open ? "Open source" : "In progress"}</span>
+                <span className={`mt-4 inline-block rounded-pill px-2 text-[length:var(--px-text-xs)] ${s.open ? "bg-primary-soft text-foreground" : "bg-muted text-muted-foreground"}`}>{s.open ? "Public demo" : "In progress"}</span>
                 {i < FLOW.length - 1 ? <ArrowRightIcon aria-hidden="true" className="absolute top-1/2 -end-5 hidden size-5 -translate-y-1/2 text-faint-foreground md:block" /> : null}
               </li>
             ))}
