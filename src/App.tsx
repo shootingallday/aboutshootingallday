@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react"
 import { ArrowRightIcon, ArrowUpRightIcon, MailIcon } from "lucide-react"
 
 import { Background } from "@/components/ui/background"
@@ -43,11 +44,65 @@ function Desk() {
         <span className="font-semibold">NQ · the desk</span>
         <span className="font-mono text-[length:var(--px-text-xs)] text-muted-foreground">simulated feed</span>
       </div>
-      <div className="grid gap-0 md:grid-cols-[1fr_16rem]">
-        <CandlestickChart candles={candles} label="NQ, one-minute candles" range={nq.range} fraction={nq.fraction} className="p-3" />
+      <div className="grid items-start gap-0 md:grid-cols-[1fr_16rem]">
+        <CandlestickChart candles={candles} label="NQ, one-minute candles" range={nq.range} fraction={nq.fraction} size="lg" className="p-3" />
         <div className="hidden border-s border-border p-3 md:block">
           <OrderBook symbol={quote.symbol} venue={quote.venue} bids={bids} asks={asks} last={quote.price} range={quote.range} maxSize={40} fraction={quote.fraction} depth={7} />
         </div>
+      </div>
+    </div>
+  )
+}
+
+function Clock() {
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000)
+    return () => clearInterval(id)
+  }, [])
+  const time = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }).format(now)
+  return <span className="tabular-nums">{time} CT · CME</span>
+}
+
+const LOG = [
+  { host: "mac", repo: "reshuffle", state: "done", note: "payout projection, proof attached" },
+  { host: "mac", repo: "rewind", state: "working", note: "market replay scrubber" },
+  { host: "jd-pc", repo: "market-order", state: "working", note: "broker reconnect on drop" },
+  { host: "jd-pc", repo: "px-journals", state: "review", note: "second model reading the diff" },
+  { host: "mac", repo: "shootingallday", state: "done", note: "this page" },
+]
+
+function Agents() {
+  const box = useRef<HTMLDivElement>(null)
+  const [shown, setShown] = useState(0)
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return setShown(LOG.length)
+    let timer = 0
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return
+      io.disconnect()
+      const next = (n: number) => { setShown(n); if (n < LOG.length) timer = window.setTimeout(() => next(n + 1), 420) }
+      next(1)
+    }, { threshold: 0.5 })
+    io.observe(box.current!)
+    return () => { io.disconnect(); clearTimeout(timer) }
+  }, [])
+  const running = LOG.filter((l) => l.state === "working").length
+  return (
+    <div ref={box} aria-hidden="true" className="crt overflow-hidden rounded-dialog bg-[#0b0c0a] font-mono text-[12.5px] leading-[1.9] text-[var(--px-gray-100)] shadow-lg ring-1 ring-white/10">
+      <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5 text-[11px] tracking-[0.08em] text-white/55 uppercase">
+        <span>px-agents v1</span>
+        <span className="flex items-center gap-2"><span className="size-1.5 rounded-full bg-[var(--px-brand-300)] shadow-[0_0_8px_var(--px-brand-300)]" />{running} running</span>
+      </div>
+      <div className="min-h-[15rem] overflow-x-auto px-5 pt-4 pb-5 whitespace-pre">
+        <div className="text-white/45">$ fleet status</div>
+        {LOG.slice(0, shown).map((l) => (
+          <div key={l.repo}>
+            <span className={l.state === "done" ? "text-[var(--px-brand-300)]" : l.state === "working" ? "text-[var(--px-amber-300)]" : "text-white/45"}>{l.state === "done" ? "✓" : l.state === "working" ? "◐" : "·"}</span>
+            {"  "}<span className="text-[#7fb0ff]">{l.host.padEnd(6)}</span>{l.repo.padEnd(16)}<span className="text-white/60">{l.note}</span>
+          </div>
+        ))}
+        <div className="text-white/45">$ <span className="caret">▌</span></div>
       </div>
     </div>
   )
@@ -107,6 +162,7 @@ export default function App() {
             <p className="m-0 flex items-center gap-2 font-mono text-[length:var(--px-text-sm)] text-muted-foreground">
               <span className="size-2 rounded-full bg-[color:var(--brand-accent)] shadow-[0_0_12px_var(--brand-accent)]" aria-hidden="true" />
               shootingallday
+              <span className="hidden text-faint-foreground sm:inline">· <Clock /></span>
             </p>
             <h1 className="mt-6 mb-0 text-[clamp(2.75rem,7vw,5.25rem)] leading-[0.98] font-bold tracking-[-0.045em] text-balance">
               <TextScramble>I trade futures.</TextScramble>{" "}
@@ -133,23 +189,25 @@ export default function App() {
 
         <section id="open-source" className="border-t border-border py-20 lg:py-28">
           <Heading kicker="Open source" title="Three tools for funded futures accounts." body="Each one does one job and gets the prop firm rules exactly right." />
-          <div className="-mx-5 grid snap-x snap-mandatory auto-cols-[85%] grid-flow-col gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:mx-0 md:auto-cols-auto md:grid-flow-row md:grid-cols-3 md:overflow-visible md:px-0">
-            {OSS.map((p) => (
-              <article key={p.name} className="group relative flex snap-start flex-col rounded-card border border-border bg-card p-6 shadow-sm transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-md">
-                <div className="flex items-baseline justify-between gap-3">
-                  <h3 className="m-0 text-[length:var(--px-text-xl)] font-semibold tracking-[-0.015em]">
-                    <a href={p.href} className="no-underline after:absolute after:inset-0 after:content-['']">{p.name}</a>
-                  </h3>
-                  {p.version ? <span className="rounded-pill border border-border px-2 font-mono text-[length:var(--px-text-xs)] text-muted-foreground">{p.version}</span> : <ArrowUpRightIcon className="size-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />}
+          <ul className="m-0 list-none border-t border-border p-0">
+            {OSS.map((p, i) => (
+              <li key={p.name} className="group relative isolate border-b border-border">
+                <span aria-hidden="true" className="absolute inset-y-0 start-0 -z-10 w-0 bg-[color-mix(in_oklab,var(--brand-accent)_10%,transparent)] transition-[width] duration-500 ease-out group-hover:w-full motion-reduce:transition-none" />
+                <div className="grid gap-4 py-8 md:grid-cols-[1fr_22rem] md:items-end md:py-10">
+                  <div>
+                    <p className="m-0 font-mono text-[11px] tracking-[0.1em] text-muted-foreground uppercase">0{i + 1} · {p.tags[0]}{p.version ? ` · ${p.version}` : ""}</p>
+                    <h3 className="mt-2 mb-0 text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] font-bold tracking-[-0.045em]">
+                      <a href={p.href} className="inline-flex items-start gap-3 no-underline after:absolute after:inset-0 after:content-['']">{p.name}<ArrowUpRightIcon className="mt-2 size-6 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[color:var(--brand-accent)] md:size-8" /></a>
+                    </h3>
+                  </div>
+                  <div className="grid gap-3">
+                    <p className="m-0 text-muted-foreground">{p.body}</p>
+                    {p.install ? <code className="relative z-10 block overflow-x-auto rounded-control bg-muted px-3 py-2 font-mono text-[length:var(--px-text-xs)] whitespace-nowrap"><span className="text-faint-foreground">$ </span>{p.install}</code> : null}
+                  </div>
                 </div>
-                <p className="mt-3 mb-0 text-muted-foreground">{p.body}</p>
-                {p.install ? <code className="mt-4 block overflow-x-auto rounded-control bg-muted px-3 py-2 font-mono text-[length:var(--px-text-xs)] whitespace-nowrap"><span className="text-faint-foreground">$ </span>{p.install}</code> : null}
-                <div className="mt-auto flex flex-wrap gap-2 pt-5">
-                  {p.tags.map((t) => <span key={t} className="rounded-pill border border-border px-2 text-[length:var(--px-text-xs)] text-muted-foreground">{t}</span>)}
-                </div>
-              </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
         <section id="system" className="border-t border-border py-20 lg:py-28">
@@ -173,17 +231,7 @@ export default function App() {
               <Heading kicker="How I build" title="A fleet of AI agents, on two machines." body="Agents pick up tickets, hand work to each other, get reviewed by a second model, and ship with proof attached. I decide what gets built and check the proof." />
               <span className="inline-block rounded-pill border border-dashed border-border px-3 py-0.5 text-[length:var(--px-text-xs)] text-muted-foreground">Full write-up coming soon</span>
             </div>
-            <div aria-hidden="true" className="overflow-hidden rounded-dialog bg-[var(--px-gray-950)] font-mono text-[12.5px] leading-[1.8] text-[var(--px-gray-100)] shadow-lg ring-1 ring-white/10">
-              <div className="flex gap-1.5 border-b border-white/10 px-4 py-3"><i className="size-2.5 rounded-full bg-white/15" /><i className="size-2.5 rounded-full bg-white/15" /><i className="size-2.5 rounded-full bg-white/15" /></div>
-              <pre className="m-0 overflow-x-auto px-5 pt-4 pb-5">
-<span className="text-white/45">$ fleet status</span>{"\n"}
-<span className="text-[#7fb0ff]">mac  </span>  reshuffle       <span className="text-[var(--px-brand-300)]">done   </span>  payout projection, proof attached{"\n"}
-<span className="text-[#7fb0ff]">mac  </span>  rewind          <span className="text-[var(--px-amber-300)]">working</span>  market replay scrubber{"\n"}
-<span className="text-[#7fb0ff]">jd-pc</span>  market-order    <span className="text-[var(--px-amber-300)]">working</span>  broker reconnect on drop{"\n"}
-<span className="text-[#7fb0ff]">jd-pc</span>  px-journals     <span className="text-white/45">review </span>  second model reading the diff{"\n"}
-<span className="text-[#7fb0ff]">mac  </span>  shootingallday  <span className="text-[var(--px-brand-300)]">done   </span>  this page
-              </pre>
-            </div>
+            <Agents />
           </div>
         </section>
 
