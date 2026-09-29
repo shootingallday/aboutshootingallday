@@ -1,0 +1,145 @@
+- generic [ref=f3e2]:
+  - banner [ref=f3e3]:
+    - link "shootingallday" [ref=f3e4] [cursor=pointer]:
+      - /url: "#"
+    - navigation "Sections" [ref=f3e6]:
+      - link "Open source" [ref=f3e7] [cursor=pointer]:
+        - /url: "#open-source"
+      - link "Agents" [ref=f3e8] [cursor=pointer]:
+        - /url: "#agents"
+      - link "Contact" [ref=f3e9] [cursor=pointer]:
+        - /url: "#contact"
+  - main [ref=f3e10]:
+    - generic [ref=f3e11]:
+      - generic [ref=f3e12]:
+        - heading [level=1] [ref=f3e13]:
+          - text: I trade futures.
+          - emphasis [ref=f3e14]: Then I build the tools I trade with.
+        - paragraph [ref=f3e15]: "I'm Jomar. I trade NQ and ES on prop firm accounts, and I write the software around it: the rule math, the risk simulations, the execution engine, the backtester, the journal. Three of them are open source."
+        - generic [ref=f3e16]:
+          - link "See the projects" [ref=f3e17] [cursor=pointer]:
+            - /url: "#open-source"
+          - link "GitHub" [ref=f3e18] [cursor=pointer]:
+            - /url: https://github.com/shootingallday
+          - link "X" [ref=f3e21] [cursor=pointer]:
+            - /url: https://x.com/
+      - figure "One trade log, dealt 400 ways" [ref=f3e24]:
+        - generic [ref=f3e25]:
+          - generic [ref=f3e26]: One trade log, dealt 400 ways
+          - generic [ref=f3e27]: $50K eval · $2K trailing
+        - img "Four hundred account equity paths from reshuffling the same trades. Paths that reach the profit target are green, paths that hit the drawdown floor are red." [ref=f3e28]
+        - generic [ref=f3e29]:
+          - generic [ref=f3e30]:
+            - term [ref=f3e31]: Passed
+            - definition [ref=f3e32]: 0%
+          - generic [ref=f3e33]:
+            - term [ref=f3e34]: Blown
+            - definition [ref=f3e35]: 0%
+          - generic [ref=f3e36]:
+            - term [ref=f3e37]: Still running
+            - definition [ref=f3e38]: 6%
+        - generic [ref=f3e39]:
+          - generic [ref=f3e40]: Same 60 sample trades every time, only the order changes. Built on reshuffle.
+          - button "Deal again" [ref=f3e41] [cursor=pointer]
+    - generic [ref=f3e42]:
+      - generic [ref=f3e43]:
+        - heading "Open source" [level=2] [ref=f3e44]
+        - paragraph [ref=f3e45]: Three tools for funded futures accounts. Each one does one job and gets the prop firm rules exactly right.
+      - generic [ref=f3e46]:
+        - article [ref=f3e47]:
+          - img [aria-hidden] [ref=f3e49]:
+            - generic [ref=f3e50]: start $50,000
+            - generic [ref=f3e53]: floor locks
+          - generic [ref=f3e54]:
+            - heading [level=3] [ref=f3e55]:
+              - link "propfirm-calc" [ref=f3e56] [cursor=pointer]:
+                - /url: https://github.com/shootingallday/propfirm-calc
+            - paragraph [ref=f3e57]: "The rule math most journals get subtly wrong: trailing drawdown floor, consistency rule, payout eligibility, position sizing, payout projection."
+            - generic [ref=f3e58]: $ pip install propfirm-calc
+            - generic [ref=f3e59]:
+              - generic [ref=f3e60]: Python
+              - generic [ref=f3e61]: No dependencies
+              - generic [ref=f3e62]: MIT
+        - article [ref=f3e63]:
+          - generic [ref=f3e79]:
+            - heading [level=3] [ref=f3e80]:
+              - link "reshuffle" [ref=f3e81] [cursor=pointer]:
+                - /url: https://github.com/shootingallday/reshuffle
+            - paragraph [ref=f3e82]: Monte Carlo from your own trade log. It deals your trades again in orders that never happened and tells you how often the account passes, blows, and how deep it dips first.
+            - generic [ref=f3e83]: $ npm install @shootingallday/reshuffle
+            - generic [ref=f3e84]:
+              - generic [ref=f3e85]: TypeScript
+              - generic [ref=f3e86]: Uses propfirm-calc's math
+        - article [ref=f3e87]:
+          - generic [aria-hidden] [ref=f3e89]:
+            - generic [ref=f3e90]:
+              - generic [ref=f3e91]: 09:30:02
+              - generic [ref=f3e92]: NQ
+              - generic [ref=f3e93]: BUY 1
+              - generic [ref=f3e94]: 21,418.25
+            - generic [ref=f3e95]:
+              - generic [ref=f3e96]: 09:30:02
+              - generic [ref=f3e97]: NQ
+              - generic [ref=f3e98]: STOP
+              - generic [ref=f3e99]: 21,406.00
+            - generic [ref=f3e100]:
+              - generic [ref=f3e101]: 09:30:02
+              - generic [ref=f3e102]: NQ
+              - generic [ref=f3e103]: TARGET
+              - generic [ref=f3e104]: 21,442.75
+            - generic [ref=f3e105]:
+              - generic [ref=f3e106]: 09:34:51
+              - generic [ref=f3e107]: NQ
+              - generic [ref=f3e108]: SELL 1
+              - generic [ref=f3e109]: 21,442.75
+            - generic [ref=f3e110]:
+              - generic [ref=f3e111]: 09:34:51
+              - generic [ref=f3e112]: NQ
+              - generic [ref=f3e113]: FLAT
+              - generic [ref=f3e114]: +98.0 pts
+          - generic [ref=f3e115]:
+            - heading [level=3] [ref=f3e116]:
+              - link "Market Order" [ref=f3e117] [cursor=pointer]:
+                - /url: https://github.com/shootingallday/MarketOrder
+            - paragraph [ref=f3e118]: The live execution engine. It watches the market in real time, spots a setup as it forms, places the entry, and manages the position to its exit.
+            - generic [ref=f3e119]:
+              - generic [ref=f3e120]: Live trading
+              - generic [ref=f3e121]: Broker API
+    - generic [ref=f3e122]:
+      - generic [ref=f3e123]:
+        - heading "How it fits together" [level=2] [ref=f3e124]
+        - paragraph [ref=f3e125]: Prove the edge, trade it, then look back honestly. Two of these are still private while I build them.
+      - generic [ref=f3e126]:
+        - generic [ref=f3e127]:
+          - generic [ref=f3e128]: Research
+          - heading "Rewind" [level=3] [ref=f3e129]
+          - paragraph [ref=f3e130]: Backtester and market replay for NQ and ES. Rust, written from scratch.
+          - generic [ref=f3e131]: In progress
+        - generic [ref=f3e135]:
+          - generic [ref=f3e136]: Live
+          - heading "Market Order" [level=3] [ref=f3e137]
+          - paragraph [ref=f3e138]: Runs the setup Rewind proved against a live feed and takes the trade.
+          - generic [ref=f3e139]: Open source
+        - generic [ref=f3e143]:
+          - generic [ref=f3e144]: Review
+          - heading "PX Journals" [level=3] [ref=f3e145]
+          - paragraph [ref=f3e146]: Trading journal that reads your fills straight from your broker.
+          - generic [ref=f3e147]: In progress
+    - generic [ref=f3e149]:
+      - generic [ref=f3e150]:
+        - heading "I build with a fleet of AI agents" [level=2] [ref=f3e151]
+        - paragraph [ref=f3e152]: "Most of this code was written by agents I orchestrate across two machines: they pick up tickets, hand work to each other, get reviewed by a second model, and ship with proof attached."
+        - paragraph [ref=f3e153]:
+          - generic [ref=f3e154]: Full write-up coming soon
+      - generic [ref=f3e160]: $ fleet status mac reshuffle done payout projection, proof attached mac rewind working market replay scrubber jd-pc market-order working broker reconnect on drop jd-pc px-journals review second model reading the diff mac shootingallday done this page
+    - paragraph [ref=f3e162]: Most trading tools are multi-asset retail products with prop firm support bolted on. Mine start from futures and prop firm rules, because that's what I trade.
+  - contentinfo [ref=f3e163]:
+    - heading "Say hi." [level=2] [ref=f3e164]
+    - generic [ref=f3e165]:
+      - link "GitHub" [ref=f3e166] [cursor=pointer]:
+        - /url: https://github.com/shootingallday
+      - link "X" [ref=f3e167] [cursor=pointer]:
+        - /url: https://x.com/
+      - link "Email" [ref=f3e168] [cursor=pointer]:
+        - /url: mailto:jomar@pxjournals.com
+    - generic [ref=f3e169]: Nothing here is trading advice. The chart up top uses sample trades, not my account.

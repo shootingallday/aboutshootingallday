@@ -1,0 +1,58 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - img "PX" [ref=e4]
+    - heading "Hi, I'm Jomar" [level=1] [ref=e5]
+    - paragraph [ref=e6]: I build tools for prop firm futures traders. Solo, technical founder.
+  - generic [ref=e7]:
+    - heading "Open source" [level=2] [ref=e8]
+    - list [ref=e9]:
+      - listitem [ref=e10]:
+        - strong [ref=e11]:
+          - link "propfirm-calc" [ref=e12] [cursor=pointer]:
+            - /url: https://github.com/shootingallday/propfirm-calc
+        - generic [ref=e13]:
+          - text: "Dependency-free Python math and CLI for funded accounts: trailing drawdown floor, the consistency rule, payout eligibility, position sizing, payout projection."
+          - code [ref=e14]: pip install propfirm-calc
+      - listitem [ref=e15]:
+        - strong [ref=e16]:
+          - link "reshuffle" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/shootingallday/reshuffle
+        - generic [ref=e18]:
+          - text: Monte Carlo for funded futures accounts, dealt from your own trade log. It replays your trades thousands of times in orders that never happened and tells you how often the account passes, how often it blows, and how deep the drawdown gets.
+          - code [ref=e19]: npm install @shootingallday/reshuffle
+      - listitem [ref=e20]:
+        - strong [ref=e21]:
+          - link "Market Order" [ref=e22] [cursor=pointer]:
+            - /url: https://github.com/shootingallday/MarketOrder
+        - text: Live execution engine. Watches the market in real time, spots a setup as it forms, and places the orders that take the trade.
+  - generic [ref=e23]:
+    - heading "Building" [level=2] [ref=e24]
+    - list [ref=e25]:
+      - listitem [ref=e26]:
+        - strong [ref=e27]: Rewind
+        - text: Backtester and market replay for NQ and ES. Rust, from scratch.
+      - listitem [ref=e28]:
+        - strong [ref=e29]: PX Journals
+        - text: Trading journal that reads your fills straight from your broker.
+  - generic [ref=e30]:
+    - heading "Why" [level=2] [ref=e31]
+    - paragraph [ref=e32]: I trade futures for a living. The tools out there are multi-asset retail products with prop firm support bolted on. Mine start from futures and prop firm rules. Most tools try to serve everyone; these serve one audience well.
+  - generic [ref=e33]:
+    - heading "Stack" [level=2] [ref=e34]
+    - list [ref=e35]:
+      - listitem [ref=e36]: TypeScript
+      - listitem [ref=e37]: React
+      - listitem [ref=e38]: Rust
+      - listitem [ref=e39]: Python
+      - listitem [ref=e40]: Node
+      - listitem [ref=e41]: Postgres
+      - listitem [ref=e42]: Tailwind
+      - listitem [ref=e43]: Cloudflare
+  - generic [ref=e44]:
+    - heading "Contact" [level=2] [ref=e45]
+    - paragraph [ref=e46]:
+      - link "jomar@pxjournals.com" [ref=e47] [cursor=pointer]:
+        - /url: mailto:jomar@pxjournals.com
+      - text: ·
+      - link "github.com/shootingallday" [ref=e48] [cursor=pointer]:
+        - /url: https://github.com/shootingallday
